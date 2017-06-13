@@ -10,11 +10,22 @@ namespace PORTALJAGUARAO.Controllers
     public class CadastrodeFuncionarioController : Controller
     {
         // GET: CadastrodeFuncionario
-        public ActionResult Cadastro(Funcionario NovoFuncionario)
+        public ActionResult Cadastro()
         {
-            string teste = NovoFuncionario.Nome;
+              
+            return View();
 
+        }
+
+        public ActionResult CadastrarNovoFuncionario(Funcionario NovoCadFuncionario)
+        {
+            if (NovoCadFuncionario != null)
+            {
+                NovoCadFuncionario.CadastrarFuncionario(NovoCadFuncionario);
+            }
             return View();
         }
+
+
     }
 }

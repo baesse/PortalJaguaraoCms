@@ -7,6 +7,7 @@
 }
 
 <body>
+    <script src="~/Content/JSSITE/VALIDACAOCPFCNPJ.js"></script>
     <div class="jumbotron">
 
         <p class="lead"><h1>Portal Jaguarão</h1></p>
@@ -52,7 +53,7 @@
 
 
 
-    @using (Html.BeginForm("Cadastro","CadastrodeFuncionario",FormMethod.Post))
+    @using (Html.BeginForm("CadastrarNovoFuncionario", "CadastrodeFuncionario",FormMethod.Post))
     {
         <div class="row">
 
@@ -60,7 +61,8 @@
                 @Html.LabelFor(funcionario => funcionario.Cpf)
 
                 @Html.TextBoxFor(funcionario => funcionario.Cpf, new { @class = "form-control" })
-             
+                
+
             </div>
             <div  class="col-lg-2">
                 @Html.LabelFor(funcionario => funcionario.DataAdmissao)

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 
@@ -7,6 +9,7 @@ namespace PORTALJAGUARAO.Models
 {
     public class Funcionario
     {
+        [Required(ErrorMessage = "Cpf do cadastro deve ser informado!")]
         public String Cpf { get; set; }
         public DateTime DataAdmissao { get; set; }
         public DateTime DataDemissao  { get; set; }
@@ -39,6 +42,21 @@ namespace PORTALJAGUARAO.Models
         public String Celular { get; set; }
         public String Substituto { get; set; }
         public Conjuge Conjuge { get; set; }
+
+
+        public  Boolean CadastrarFuncionario(Funcionario NovoCadastro)
+        {
+            SqlConnection Conexao = Banco.GetConexao();
+            SqlCommand Comando = Banco.GetComando(Conexao);
+            Comando.CommandText = "Insert into CAD_FUNCIONARIO (NOME) VALUES (@NOME)";
+            Comando.Parameters.AddWithValue("@NOME", NovoCadastro.Nome);
+            Comando.ExecuteNonQuery();
+            Conexao.Close();
+                       
+
+            return true;
+
+        }
 
     }
 }
