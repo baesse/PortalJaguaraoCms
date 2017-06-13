@@ -1,0 +1,339 @@
+﻿@using PORTALJAGUARAO.Models;
+
+@model Funcionario
+
+@{
+    ViewBag.Title = "Cadastro";
+}
+
+<body>
+    <div class="jumbotron">
+
+        <p class="lead"><h1>Portal Jaguarão</h1></p>
+        <p><a href="http://asp.net" class="btn btn-primary btn-lg">Acessar &raquo;</a></p>
+    </div>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Cadastro de funcionario", "Cadastro", "Portal")</li>
+                    <li>@Html.ActionLink("Férias", "Login", "Home")</li>
+                    <li>@Html.ActionLink("Exames periodicos", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Comprovantes de pagamento", "Contact", "Home")</li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Documentos internos
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Pop´s", "Contact", "Home")</li>
+                            <li>@Html.ActionLink("Codigo de etica", "Contact", "Home")</li>
+                            <li>@Html.ActionLink("Codigo de conduta", "Contact", "Home")</li>
+                            <li>@Html.ActionLink("Organograma", "Contact", "Home")</li>
+                        </ul>
+                    </li>
+
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+
+   
+
+
+
+    @using (Html.BeginForm("Cadastro","CadastrodeFuncionario",FormMethod.Post))
+    {
+        <div class="row">
+
+            <div class="col-lg-2">
+                @Html.LabelFor(funcionario => funcionario.Cpf)
+
+                @Html.TextBoxFor(funcionario => funcionario.Cpf, new { @class = "form-control" })
+             
+            </div>
+            <div  class="col-lg-2">
+                @Html.LabelFor(funcionario => funcionario.DataAdmissao)
+
+                @Html.TextBoxFor(funcionario => funcionario.DataAdmissao, new { @class = "form-control" })
+              
+            </div>
+
+            <div class="col-lg-2">
+                @Html.LabelFor(funcionario => funcionario.DataDemissao)
+
+                @Html.TextBoxFor(funcionario => funcionario.DataDemissao, new { @class = "form-control" })
+
+            </div>
+            <div class="col-lg-2">
+                @Html.LabelFor(funcionario => funcionario.Atividade)
+
+                @Html.TextBoxFor(funcionario => funcionario.Atividade, new { @class = "form-control" })
+
+            </div>
+           
+        </div>
+       <br />
+
+    <div class="row">
+        <div class="col-lg-3">
+            @Html.LabelFor(funcionario => funcionario.Nome)
+
+            @Html.TextBoxFor(funcionario => funcionario.Nome, new { @class = "form-control" })
+
+        </div>
+        <div class="col-lg-2">
+            @Html.LabelFor(funcionario => funcionario.Sexo)
+
+            @Html.TextBoxFor(funcionario => funcionario.Sexo, new { @class = "form-control" })
+
+        </div>
+
+        <div class="col-lg-2">
+            @Html.LabelFor(funcionario => funcionario.DataAnivesario)
+
+            @Html.TextBoxFor(funcionario => funcionario.DataAnivesario, new { @class = "form-control" })
+
+        </div>
+        <div class="col-lg-1">
+            @Html.LabelFor(funcionario => funcionario.Idade)
+
+            @Html.TextBoxFor(funcionario => funcionario.Idade, new { @class = "form-control" })
+
+        </div>
+    </div>
+        <br />
+        <br /><div class="row">
+
+    <div class="col-lg-2">
+        @Html.LabelFor(funcionario => funcionario.Setor)
+
+        @Html.TextBoxFor(funcionario => funcionario.Setor,new { @class = "form-control" })
+
+    </div>
+    <div class="col-lg-2">
+        @Html.LabelFor(funcionario => funcionario.EstadoCivil)
+
+        @Html.TextBoxFor(funcionario => funcionario.EstadoCivil, new { @class = "form-control" })
+
+    </div>
+
+    <div class="col-lg-2">
+        @Html.LabelFor(funcionario => funcionario.Ci)
+
+        @Html.TextBoxFor(funcionario => funcionario.Ci, new { @class = "form-control" })
+
+    </div>
+    <div class="col-lg-2">
+        @Html.LabelFor(funcionario => funcionario.DataEmissaoci)
+
+        @Html.TextBoxFor(funcionario => funcionario.DataEmissaoci, new { @class = "form-control" })
+
+    </div>
+    
+</div>
+        <br />
+        <br />
+    <div class="row">
+
+                  <div class="col-lg-2">
+                      @Html.LabelFor(funcionario => funcionario.DataNascimento)
+
+                      @Html.TextBoxFor(funcionario => funcionario.DataNascimento, new { @class = "form-control" })
+
+                  </div>
+                  <div class="col-lg-2">
+                      @Html.LabelFor(funcionario => funcionario.NomePai)
+
+                      @Html.TextBoxFor(funcionario => funcionario.NomePai, new { @class = "form-control" })
+
+                  </div>
+        <div class="col-lg-2">
+            @Html.LabelFor(funcionario => funcionario.NomeMae)
+
+            @Html.TextBoxFor(funcionario => funcionario.NomeMae, new { @class = "form-control" })
+
+        </div>
+
+    <div class="col-lg-2">
+        @Html.LabelFor(funcionario => funcionario.Cargo)
+
+        @Html.TextBoxFor(funcionario => funcionario.Cargo, new { @class = "form-control" })
+
+    </div>
+    
+</div>
+        <br />
+        <br />
+    <div class="row">
+
+    <div class="col-lg-2">
+        @Html.LabelFor(funcionario => funcionario.NumeroPis)
+
+        @Html.TextBoxFor(funcionario => funcionario.NumeroPis, new { @class = "form-control" })
+
+    </div>
+    <div class="col-lg-2">
+        @Html.LabelFor(funcionario => funcionario.Cep)
+
+        @Html.TextBoxFor(funcionario => funcionario.Cep, new { @class = "form-control" })
+
+    </div>
+
+    <div class="col-lg-2">
+        @Html.LabelFor(funcionario => funcionario.Ctps)
+
+        @Html.TextBoxFor(funcionario => funcionario.Ctps, new { @class = "form-control" })
+
+    </div>
+    <div class="col-lg-2">
+        @Html.LabelFor(funcionario => funcionario.Serie)
+
+        @Html.TextBoxFor(funcionario => funcionario.Serie, new { @class = "form-control" })
+
+    </div>
+   
+</div>
+    <br />
+ 
+
+    <div class="row">
+
+
+        <div class="col-lg-3">
+            @Html.LabelFor(funcionario => funcionario.Endereco)
+
+            @Html.TextBoxFor(funcionario => funcionario.Endereco, new { @class = "form-control" })
+
+        </div>
+        <div class="col-lg-2">
+            @Html.LabelFor(funcionario => funcionario.Bairro)
+
+            @Html.TextBoxFor(funcionario => funcionario.Bairro, new { @class = "form-control" })
+
+        </div>
+        <div class="col-lg-2">
+            @Html.LabelFor(funcionario => funcionario.Cidade)
+
+            @Html.TextBoxFor(funcionario => funcionario.Cidade, new { @class = "form-control" })
+
+        </div>
+        <div class="col-lg-1">
+            @Html.LabelFor(funcionario => funcionario.UF)
+
+            @Html.TextBoxFor(funcionario => funcionario.UF, new { @class = "form-control" })
+
+        </div>
+        
+    </div>
+        <br />
+
+        <div class="row">
+
+
+            <div class="col-lg-3">
+                @Html.LabelFor(funcionario => funcionario.BancoPagamento)
+
+                @Html.TextBoxFor(funcionario => funcionario.BancoPagamento, new { @class = "form-control" })
+
+            </div>
+            <div class="col-lg-2">
+                @Html.LabelFor(funcionario => funcionario.Naturalidade)
+
+                @Html.TextBoxFor(funcionario => funcionario.Naturalidade, new { @class = "form-control" })
+
+            </div>
+            <div class="col-lg-2">
+                @Html.LabelFor(funcionario => funcionario.Escolaridade)
+
+                @Html.TextBoxFor(funcionario => funcionario.Escolaridade, new { @class = "form-control" })
+
+            </div>
+            <div class="col-lg-2">
+                @Html.LabelFor(funcionario => funcionario.Telefone)
+
+                @Html.TextBoxFor(funcionario => funcionario.Telefone, new { @class = "form-control" })
+
+            </div>
+
+        </div>
+      <br/>
+        <div class="row">
+
+
+            <div class="col-lg-3">
+                @Html.LabelFor(funcionario => funcionario.Celular)
+
+                @Html.TextBoxFor(funcionario => funcionario.Celular, new { @class = "form-control" })
+
+            </div>
+            <div class="col-lg-2">
+                @Html.LabelFor(funcionario => funcionario.Substituto)
+
+                @Html.TextBoxFor(funcionario => funcionario.Substituto, new { @class = "form-control" })
+
+            </div>
+            <div class="col-lg-2">
+                @Html.LabelFor(funcionario => funcionario.Escolaridade)
+
+                @Html.TextBoxFor(funcionario => funcionario.Escolaridade, new { @class = "form-control" })
+
+            </div>
+           
+          
+
+        </div>
+        <br />
+        <div class="row">
+            <h3>Conjuge</h3>
+
+            <hr />
+            <div class="col-lg-2">
+               
+                @Html.LabelFor(funcionario => funcionario.Conjuge.Nome)
+
+                @Html.TextBoxFor(funcionario => funcionario.Conjuge.Nome, new { @class = "form-control" })
+
+            </div>
+            <div class="col-lg-2">
+                @Html.LabelFor(funcionario => funcionario.Conjuge.Cpf)
+
+                @Html.TextBoxFor(funcionario => funcionario.Conjuge.Cpf, new { @class = "form-control" })
+
+            </div>
+            <div class="col-lg-2">
+                @Html.LabelFor(funcionario => funcionario.Conjuge.DatadeNascimento)
+
+                @Html.TextBoxFor(funcionario => funcionario.Conjuge.DatadeNascimento, new { @class = "form-control" })
+
+            </div>
+         
+        </div>
+        <br />
+        <br />
+        <div class="row">
+            <div class="col-lg-4">
+
+               <input type="submit" class="btn btn-primary btn-lg" value="Cadastrar"/>
+            </div>
+
+        </div>
+
+    }
+
+   
+
+
+
+
+</body>
