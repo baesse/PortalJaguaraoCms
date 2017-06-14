@@ -11,7 +11,7 @@ namespace PORTALJAGUARAO.Models
 
         public static SqlConnection GetConexao()
         {
-            SqlConnection Conexao = new SqlConnection("Server=192.168.0.86;Database=bdportal;User Id=sa;Password =12345qaz@; ");
+            SqlConnection Conexao = new SqlConnection("Server=192.168.0.86; Database=bdportal;User Id=sa;Password =12345qaz@; ");
             Conexao.Open();
             return Conexao;
 
