@@ -50,6 +50,7 @@ namespace PORTALJAGUARAO.Models
             SqlCommand Comando = Banco.GetComando(Conexao);
             Comando.CommandText = "Insert into CAD_FUNCIONARIO (NOME) VALUES (@NOME)";
             Comando.Parameters.AddWithValue("@NOME", NovoCadastro.Nome);
+            string teste = "";
             Comando.ExecuteNonQuery();
             Conexao.Close();
                        
