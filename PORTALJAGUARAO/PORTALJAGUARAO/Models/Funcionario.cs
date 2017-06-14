@@ -11,6 +11,8 @@ namespace PORTALJAGUARAO.Models
     {
         [Required(ErrorMessage = "Cpf do cadastro deve ser informado!")]
         public String Cpf { get; set; }
+        public String teste { get; set; }
+
         public DateTime DataAdmissao { get; set; }
         public DateTime DataDemissao  { get; set; }
         public Boolean Atividade { get; set; }
