@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "CadastroDeHoraExtra";
+}
+
+<div class="jumbotron">
+    <p class="lead"><h1>Portal Jaguarão</h1></p>    
+</div>
+
+<body>
+    @section Scripts {
+        <script>
+        $(document).ready(function ()
+        {
+            $("#telefone").inputmask("mask", { "mask": "(99) 9999-99999" });
+            $("#celular").inputmask("mask", { "mask": "(99) 99999-99999" });
+            $("#cpf").inputmask("mask", { "mask": "999.999.999-99" }, { reverse: true });
+            $("#cpf1").inputmask("mask", { "mask": "999.999.999-99" }, { reverse: true });
+            $("#cep").inputmask("mask", { "mask": "99999-999" });
+            $("#nascimento").inputmask("mask", { "mask": "99/99/9999" });
+            $("#nascimento1").inputmask("mask", { "mask": "99/99/9999" });
+            $("#nascimento2").inputmask("mask", { "mask": "99/99/9999" });
+            $("#nascimento3").inputmask("mask", { "mask": "99/99/9999" });
+            $("#nascimento4").inputmask("mask", { "mask": "99/99/9999" });
+            $("#preco").inputmask("mask", { "mask": "999.999,99" }, { reverse: true });
+            $("#valor").inputmask("mask", { "mask": "#.##9,99" }, { reverse: true });
+            $("#ip").inputmask("mask", { "mask": "999.999.999.999" });
+    });
+        </script>
+    }
+
+
+
+    <div class="row">
+        <div class="panel panel-primary">
+           
+            <div class="panel-heading">Dados Financeiros</div>
+            <div class="panel-body">
+                
+
+                <input type="submit" class="btn btn-primary" value="Inserir novo dado financeiro" />
+            </div>
+
+           
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>

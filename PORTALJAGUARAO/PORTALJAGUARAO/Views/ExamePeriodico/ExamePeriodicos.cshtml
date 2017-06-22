@@ -1,0 +1,132 @@
+﻿@using PORTALJAGUARAO.Models;
+
+@model  ExamePeriodico
+
+
+@{
+    ViewBag.Title = "ExamePeriodicos";
+}
+
+<body>
+    @section Scripts {
+        <script>
+        $(document).ready(function ()
+        {
+            $("#telefone").inputmask("mask", { "mask": "(99) 9999-99999" });
+            $("#celular").inputmask("mask", { "mask": "(99) 99999-99999" });
+            $("#cpf").inputmask("mask", { "mask": "999.999.999-99" }, { reverse: true });
+            $("#cpf1").inputmask("mask", { "mask": "999.999.999-99" }, { reverse: true });
+            $("#cep").inputmask("mask", { "mask": "99999-999" });
+            $("#nascimento").inputmask("mask", { "mask": "99/99/9999" });
+            $("#nascimento1").inputmask("mask", { "mask": "99/99/9999" });
+            $("#nascimento2").inputmask("mask", { "mask": "99/99/9999" });
+            $("#nascimento3").inputmask("mask", { "mask": "99/99/9999" });
+            $("#nascimento4").inputmask("mask", { "mask": "99/99/9999" });
+            $("#preco").inputmask("mask", { "mask": "999.999,99" }, { reverse: true });
+            $("#valor").inputmask("mask", { "mask": "#.##9,99" }, { reverse: true });
+            $("#ip").inputmask("mask", { "mask": "999.999.999.999" });
+    });
+        </script>
+    }
+
+    <div class="jumbotron">
+
+        <p class="lead"><h1>Portal Jaguarão</h1></p>
+       
+    </div>
+
+    @using (@Html.BeginForm("ExamePeriodicos2", "ExamePeriodico", FormMethod.Post))
+    {
+        @Html.ValidationSummary(true)
+    <div class="row">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Exame periodico</div>
+            <div class="panel-body">
+
+
+
+                <div class="row">
+
+                    <div class="col-lg-4">
+
+                        @{List<SelectListItem> NomeFuncionarios = new List<SelectListItem>();
+
+                            NomeFuncionarios.Add(new SelectListItem
+                            {
+
+                                Value = "Igor Baesse",
+                                Text = "Igor Baesse",
+                            });
+
+
+                        }
+
+
+                        @Html.LabelFor(ExamePeriodico => ExamePeriodico.NomeColaborador)
+                        @Html.DropDownListFor(ExamePeriodico => ExamePeriodico.NomeColaborador, NomeFuncionarios, "Selecione", new { @class = "form-control" })
+                    </div>
+                </div>
+                <br />
+
+                <div class="row">
+
+                    <div class="col-lg-2">
+                        @Html.LabelFor(ExamePeriodico => ExamePeriodico.Nascimento)
+                        @Html.TextBoxFor(ExamePeriodico => ExamePeriodico.Nascimento, new { @class = "form-control" ,id= "nascimento" })
+                        @Html.ValidationMessageFor(ExamePeriodico => ExamePeriodico.Nascimento)
+                    </div>
+                    <div class="col-lg-2">
+                        @Html.LabelFor(ExamePeriodico => ExamePeriodico.Admissao)
+                        @Html.TextBoxFor(ExamePeriodico => ExamePeriodico.Admissao, new { @class = "form-control", id = "nascimento1" })
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-lg-2">
+                        @Html.LabelFor(ExamePeriodico => ExamePeriodico.UltimoExame)
+                        @Html.TextBoxFor(ExamePeriodico => ExamePeriodico.UltimoExame, new { @class = "form-control", id = "nascimento2" })
+                    </div>
+                    <div class="col-lg-2">
+                        @Html.LabelFor(ExamePeriodico => ExamePeriodico.proximoExame)
+                        @Html.TextBoxFor(ExamePeriodico => ExamePeriodico.proximoExame, new { @class = "form-control", id = "nascimento3" })
+                    </div>
+                    <div class="col-lg-2">
+                        @Html.LabelFor(ExamePeriodico => ExamePeriodico.Solicitacao)
+                        @Html.TextBoxFor(ExamePeriodico => ExamePeriodico.Solicitacao, new { @class = "form-control", id = "nascimento4" })
+                    </div>
+
+
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-lg-2">
+                        <input type="submit" class="btn btn-primary" value="Cadastrar" />
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+                                
