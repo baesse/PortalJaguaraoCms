@@ -200,6 +200,7 @@
     <Compile Include="Controllers\DuvidasController.cs" />
     <Compile Include="Controllers\ExamePeriodicoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HorasExtrasController.cs" />
     <Compile Include="Controllers\JustificativadePontoController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -213,7 +214,6 @@
     <Compile Include="Models\ExamePeriodico.cs" />
     <Compile Include="Models\Funcionario.cs" />
     <Compile Include="Models\HoraExtra.cs" />
-    <Compile Include="Models\HorasExtrasController.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Justificativa.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -369,8 +369,8 @@
     <Content Include="Views\Portal\Principal.cshtml" />
     <Content Include="Views\CadastrodeFuncionario\Cadastro.cshtml" />
     <Content Include="Views\JustificativadePonto\Justificativa.cshtml" />
-    <Content Include="Views\HorasExtras\CadastroDeHoraExtra.cshtml" />
-    <Content Include="Views\ExamePeriodico\ExamePeriodicos.cshtml" />
+    <Content Include="Views\HorasExtras\HorasExtras.cshtml" />
+    <Content Include="Views\ExamePeriodico\ExamesPeriodicos.cshtml" />
     <Content Include="Views\Duvidas\Duvidas.cshtml" />
   </ItemGroup>
   <ItemGroup>

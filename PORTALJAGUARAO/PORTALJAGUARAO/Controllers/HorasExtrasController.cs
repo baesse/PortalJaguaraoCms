@@ -4,12 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace PORTALJAGUARAO.Models
+namespace PORTALJAGUARAO.Controllers
 {
     public class HorasExtrasController : Controller
     {
         // GET: HorasExtras
-        public ActionResult CadastroDeHoraExtra()
+        public ActionResult HorasExtras()
         {
             return View();
         }

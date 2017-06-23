@@ -19,5 +19,18 @@ namespace PORTALJAGUARAO.Controllers
         {
             Response.Redirect(@"~\cadastrodefuncionario\cadastro");
         }
+
+        public void Exame()
+        {
+            Response.Redirect(@"~\ExamePeriodico\ExamesPeriodicos");
+        }
+        public void justificativa()
+        {
+            Response.Redirect(@"~\JustificativadePonto\justificativa");
+        }
+        public void HoraExtra()
+        {
+            Response.Redirect(@"~\HorasExtras\HorasExtras");
+        }
     }
 }

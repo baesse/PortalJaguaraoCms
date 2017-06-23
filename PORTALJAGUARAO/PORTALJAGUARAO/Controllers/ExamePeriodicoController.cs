@@ -9,7 +9,7 @@ namespace PORTALJAGUARAO.Controllers
     public class ExamePeriodicoController : Controller
     {
         // GET: ExamePeriodico
-        public ActionResult ExamePeriodicos()
+        public ActionResult ExamesPeriodicos()
         {
             return View();
         }
