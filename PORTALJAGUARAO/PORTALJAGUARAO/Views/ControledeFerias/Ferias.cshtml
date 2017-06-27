@@ -1,0 +1,294 @@
+﻿@using PORTALJAGUARAO.Models;
+
+@model Ferias
+
+@{
+    ViewBag.Title = "Ferias";
+}
+
+@section Scripts {
+    <script>
+            $(document).ready(function () {
+                $("#telefone").inputmask("mask", { "mask": "(99) 9999-99999" });
+                $("#celular").inputmask("mask", { "mask": "(99) 99999-99999" });
+                $("#cpf").inputmask("mask", { "mask": "999.999.999-99" }, { reverse: true });
+                $("#cpf1").inputmask("mask", { "mask": "999.999.999-99" }, { reverse: true });
+                $("#cep").inputmask("mask", { "mask": "99999-999" });
+                $("#nascimento").inputmask("mask", { "mask": "99/99/9999" });
+                $("#nascimento1").inputmask("mask", { "mask": "99/99/9999" });
+                $("#nascimento2").inputmask("mask", { "mask": "99/99/9999" });
+                $("#nascimento3").inputmask("mask", { "mask": "99/99/9999" });
+                $("#nascimento4").inputmask("mask", { "mask": "99/99/9999" });
+                $("#nascimento5").inputmask("mask", { "mask": "99/99/9999" });
+                $("#nascimento6").inputmask("mask", { "mask": "99/99/9999" });
+                $("#nascimento7").inputmask("mask", { "mask": "99/99/9999" });
+                $("#nascimento8").inputmask("mask", { "mask": "99/99/9999" });
+                $("#nascimento9").inputmask("mask", { "mask": "99/99/9999" });
+
+                $("#preco").inputmask("mask", { "mask": "999.999,99" }, { reverse: true });
+                $("#valor").inputmask("mask", { "mask": "#.##9,99" }, { reverse: true });
+                $("#ip").inputmask("mask", { "mask": "999.999.999.999" });
+                $("#hora1").inputmask("mask", { "mask": "99:99" });
+                $("#hora2").inputmask("mask", { "mask": "99:99" });
+                $("#hora3").inputmask("mask", { "mask": "99:99" });
+                $("#hora4").inputmask("mask", { "mask": "99:99" });
+                $("#hora5").inputmask("mask", { "mask": "99:99" });
+
+            });
+    </script>
+}
+
+<div class="row">
+    <div class="col-lg-1"></div>
+    <div class="col-lg-10">
+        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <img src="~/Content/IMG/imagem 1.PNG" alt="...">
+
+                </div>
+                <div class="item">
+                    <img src="~/Content/IMG/imagem 1.PNG" alt="...">
+                    <div class="carousel-caption">
+                        ...
+                    </div>
+                </div>
+                ...
+            </div>
+
+            <!-- Controls -->
+            <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li>@Html.ActionLink("Cadastro de funcionario", "Cadastro", "Portal")</li>
+                <li>@Html.ActionLink("Exames Periodicos", "Exame", "Portal")</li>
+                <li>@Html.ActionLink("Justificativa de ponto", "Justificativa", "Portal")</li>
+                <li>@Html.ActionLink("Hora extra", "horaextra", "Portal")</li>
+                <li>@Html.ActionLink("Férias","Ferias", "ControledeFerias")</li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        Documentos internos
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>@Html.ActionLink("Pop´s", "Contact", "Home")</li>
+                        <li>@Html.ActionLink("Codigo de etica", "Contact", "Home")</li>
+                        <li>@Html.ActionLink("Código de conduta", "Contact", "Home")</li>
+                        <li>@Html.ActionLink("Organograma", "Contact", "Home")</li>
+                    </ul>
+                </li>
+
+            </ul>
+            @Html.Partial("_LoginPartial")
+        </div>
+    </div>
+</div>
+
+
+@using (Html.BeginForm("Ferias", "ControledeFerias", FormMethod.Post))
+{
+    <br />
+    <div class="row">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10">
+            <div class="row">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">Férias</div>
+                    <div class="panel-body">
+
+                        <div class="row">
+
+                            <div class="col-lg-3">
+
+
+                                @{List<SelectListItem> NomeFuncionarios = new List<SelectListItem>();
+
+                NomeFuncionarios.Add(new SelectListItem
+                {
+
+                    Value = "Igor Baesse",
+                    Text = "Igor Baesse",
+                });
+
+
+                                }
+
+
+                                @Html.LabelFor(Ferias => Ferias.NomeColaborador)
+                                @Html.DropDownListFor(Ferias => Ferias.NomeColaborador, NomeFuncionarios, "Selecione", new { @class = "form-control" })
+
+                            </div>
+
+                           
+                            
+                                <div class="col-lg-3">
+
+
+                                    @{List<SelectListItem> setor = new List<SelectListItem>();
+
+                                  setor.Add(new SelectListItem
+                                          {
+        
+                                            Value = "Igor Baesse",
+                                           Text = "Igor Baesse",
+                                               });
+
+
+                                    }
+
+
+                                    @Html.LabelFor(Ferias => Ferias.Setor)
+                                    @Html.DropDownListFor(Ferias => Ferias.Setor, setor, "Selecione", new { @class = "form-control" })
+
+                                 </div>
+                            <div class="col-lg-3">
+                               
+
+                              
+
+                                    @{List<SelectListItem> Substituicao = new List<SelectListItem>();
+
+                                        Substituicao.Add(new SelectListItem
+                                            {
+
+                                               Value = "Igor Baesse",
+                                               Text = "Igor Baesse",
+                                              });
+
+
+                                    }
+
+
+                                    @Html.LabelFor(Ferias => Ferias.Substituicao)
+                                    @Html.DropDownListFor(Ferias => Ferias.Substituicao, Substituicao, "Selecione", new { @class = "form-control" })
+
+                               
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-lg-2">
+                                @Html.LabelFor(Ferias=>Ferias.Periodoaquisitivo)
+                                @Html.TextBoxFor(Ferias => Ferias.Periodoaquisitivo,new { @class = "form-control" ,id="nascimento"}) 
+                            </div>
+                            <div class="col-lg-2">
+                                @Html.LabelFor(Ferias => Ferias.Periodoaquisitivo)
+                                @Html.TextBoxFor(Ferias => Ferias.Periodoaquisitivo, new { @class = "form-control", id = "nascimento1" })
+                            </div>
+
+
+
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-lg-2">
+                                @Html.LabelFor(Ferias => Ferias.DataLimite)
+                                @Html.TextBoxFor(Ferias => Ferias.DataLimite, new { @class = "form-control", id = "nascimento2" })
+                            </div>
+                            <div class="col-lg-2">
+                                @Html.LabelFor(Ferias => Ferias.Admissao)
+                                @Html.TextBoxFor(Ferias => Ferias.Admissao, new { @class = "form-control", id = "nascimento3" })
+                                
+                            </div>
+
+
+
+                        </div>
+                        
+                        <br />
+                        <div class="row">
+                            <div class="col-lg-2">
+                                @Html.LabelFor(Ferias => Ferias.ProximasFerias1)
+                                @Html.TextBoxFor(Ferias => Ferias.ProximasFerias1, new { @class = "form-control", id = "nascimento4" })
+                            </div>
+                            <div class="col-lg-2">
+                                @Html.LabelFor(Ferias => Ferias.ProximasFerias1lim)
+                                @Html.TextBoxFor(Ferias => Ferias.ProximasFerias1lim, new { @class = "form-control", id = "nascimento5" })
+                            </div>
+
+
+
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-lg-2">
+                                @Html.LabelFor(Ferias => Ferias.ProximasFerias2)
+                                @Html.TextBoxFor(Ferias => Ferias.ProximasFerias2, new { @class = "form-control", id = "nascimento6" })
+                            </div>
+                            <div class="col-lg-2">
+                                @Html.LabelFor(Ferias => Ferias.ProximasFerias2lim)
+                                @Html.TextBoxFor(Ferias => Ferias.ProximasFerias2lim, new { @class = "form-control", id = "nascimento7" })
+                            </div>
+
+
+
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-lg-2">
+                                @Html.LabelFor(Ferias => Ferias.ProximasFerias3)
+                                @Html.TextBoxFor(Ferias => Ferias.ProximasFerias3, new { @class = "form-control", id = "nascimento8" })
+                            </div>
+                            <div class="col-lg-2">
+                                @Html.LabelFor(Ferias => Ferias.ProximasFerias3)
+                                @Html.TextBoxFor(Ferias => Ferias.ProximasFerias3lim, new { @class = "form-control", id = "nascimento9" })
+                            </div>
+
+
+
+                        </div>
+
+                        <br />
+                        <div class="row">
+                            
+                            <div class="col-lg-2">
+                                <input type="submit" class="btn btn-primary" value="Cadastrar" />
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+                                }

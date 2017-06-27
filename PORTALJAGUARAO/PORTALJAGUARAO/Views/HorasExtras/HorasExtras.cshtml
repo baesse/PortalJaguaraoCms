@@ -26,6 +26,12 @@
                 $("#preco").inputmask("mask", { "mask": "999.999,99" }, { reverse: true });
                 $("#valor").inputmask("mask", { "mask": "#.##9,99" }, { reverse: true });
                 $("#ip").inputmask("mask", { "mask": "999.999.999.999" });
+                $("#hora1").inputmask("mask", { "mask": "99:99" });
+                $("#hora2").inputmask("mask", { "mask": "99:99" });
+                $("#hora3").inputmask("mask", { "mask": "99:99" });
+                $("#hora4").inputmask("mask", { "mask": "99:99" });
+                $("#hora5").inputmask("mask", { "mask": "99:99" });
+
             });
         </script>
     }
@@ -85,6 +91,8 @@
                     <li>@Html.ActionLink("Exames Periodicos", "Exame", "Portal")</li>
                     <li>@Html.ActionLink("Justificativa de ponto", "Justificativa", "Portal")</li>
                     <li>@Html.ActionLink("Hora extra", "horaextra", "Portal")</li>
+                    <li>@Html.ActionLink("Férias", "Ferias", "ControledeFerias")</li>
+                    <li>@Html.ActionLink("Contra cheque", "ContreleFolhaPagamento", "ContraCheque")</li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                             Documentos internos
@@ -121,7 +129,7 @@
                     <div class="col-lg-10">
                         <div class="row">
                             <div class="panel panel-primary">
-                                <div class="panel-heading">Conjuge</div>
+                                <div class="panel-heading">Hora extra</div>
                                 <div class="panel-body">
 
                                     <div class="row">
@@ -150,34 +158,45 @@
 
                                         <div class="col-lg-2">
                                             @Html.LabelFor(HoraExtra => HoraExtra.DataHoraExtra)
-                                            @Html.TextBoxFor(HoraExtra => HoraExtra.DataHoraExtra, new { @class = "form-control" })
+                                            @Html.TextBoxFor(HoraExtra => HoraExtra.DataHoraExtra, new { @class = "form-control",id="nascimento" })
                                         </div>
-                                        <div class="col-lg-2">
-                                            @Html.LabelFor(HoraExtra => HoraExtra.PrimeiraEntrada)
-                                            @Html.TextBoxFor(HoraExtra => HoraExtra.SegundaEntrada, new { @class = "form-control" })
-                                        </div>
+                                        
                                     </div>
                                     <br />
+                                   
+                                    <div class="row">
+                                        <div class="col-lg-2">
+                                            @Html.LabelFor(HoraExtra => HoraExtra.PrimeiraEntrada)
+                                            @Html.TextBoxFor(HoraExtra => HoraExtra.SegundaEntrada, new { @class = "form-control",id="hora1" })
+                                        </div>
+                                        <div class="col-lg-2">
+                                            @Html.LabelFor(HoraExtra => HoraExtra.SegundaEntrada)
+                                            @Html.TextBoxFor(HoraExtra => HoraExtra.SegundaEntrada, new { @class = "form-control", id = "hora2" })
+                                        </div>
+                                       
+                                    </div>
                                     <br />
                                     <div class="row">
 
                                         <div class="col-lg-2">
-                                            @Html.LabelFor(HoraExtra => HoraExtra.SegundaEntrada)
-                                            @Html.TextBoxFor(HoraExtra => HoraExtra.SegundaEntrada, new { @class = "form-control" })
+                                            @Html.LabelFor(HoraExtra => HoraExtra.primeirasaida)
+                                            @Html.TextBoxFor(HoraExtra => HoraExtra.primeirasaida, new { @class = "form-control", id = "hora3" })
                                         </div>
                                         <div class="col-lg-2">
                                             @Html.LabelFor(HoraExtra => HoraExtra.SegundaSaida)
-                                            @Html.TextBoxFor(HoraExtra => HoraExtra.SegundaSaida, new { @class = "form-control" })
+                                            @Html.TextBoxFor(HoraExtra => HoraExtra.SegundaSaida, new { @class = "form-control", id = "hora4" })
                                         </div>
+
+                                       
+
                                     </div>
                                     <br />
-                                    <div class="row">
 
+                                    <div class="row">
                                         <div class="col-lg-2">
                                             @Html.LabelFor(HoraExtra => HoraExtra.TotalDeMinutos)
-                                            @Html.TextBoxFor(HoraExtra => HoraExtra.TotalDeMinutos, new { @class = "form-control" })
+                                            @Html.TextBoxFor(HoraExtra => HoraExtra.TotalDeMinutos, new { @class = "form-control", id = "hora5" })
                                         </div>
-
                                     </div>
                                     <br />
                                     <div class="row">

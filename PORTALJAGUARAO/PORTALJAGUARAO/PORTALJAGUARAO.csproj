@@ -197,26 +197,33 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CadastrodeFuncionarioController.cs" />
+    <Compile Include="Controllers\ContraChequeController.cs" />
     <Compile Include="Controllers\DuvidasController.cs" />
     <Compile Include="Controllers\ExamePeriodicoController.cs" />
+    <Compile Include="Controllers\ControledeFeriasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HorasExtrasController.cs" />
     <Compile Include="Controllers\JustificativadePontoController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PortalController.cs" />
+    <Compile Include="Controllers\testemodalController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Banco.cs" />
     <Compile Include="Models\Conjuge.cs" />
+    <Compile Include="Models\Context.cs" />
+    <Compile Include="Models\ContraCheque.cs" />
     <Compile Include="Models\ExamePeriodico.cs" />
+    <Compile Include="Models\Ferias.cs" />
     <Compile Include="Models\Funcionario.cs" />
     <Compile Include="Models\HoraExtra.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Justificativa.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\TesteFormulario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -224,6 +231,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\IMG\imagem 1.PNG" />
+    <Content Include="Content\IMG\pagamento.jpeg" />
     <Content Include="Content\JSSITE\VALIDACAOCPFCNPJ.js" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
@@ -372,9 +380,12 @@
     <Content Include="Views\HorasExtras\HorasExtras.cshtml" />
     <Content Include="Views\ExamePeriodico\ExamesPeriodicos.cshtml" />
     <Content Include="Views\Duvidas\Duvidas.cshtml" />
+    <Content Include="Views\ContraCheque\ContreleFolhaPagamento.cshtml" />
+    <Content Include="Views\ControledeFerias\Ferias.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\testemodal\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
