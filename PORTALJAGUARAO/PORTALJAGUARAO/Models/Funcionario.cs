@@ -63,7 +63,21 @@ namespace PORTALJAGUARAO.Models
         public Conjuge Conjuge { get; set; }
         [Display(Name = "Observação")]
         public String observacao { get; set; }
+      
+        public String senha { get; set; }
+        public String resenha { get; set; }
+        public FilhoFuncionario filho { get; set; }
+        public Gratificacao gratificacao { get; set; }
 
+        public Funcionario()
+        {
+
+            filho = new FilhoFuncionario();
+            Conjuge = new Conjuge();
+            gratificacao = new Gratificacao();
+
+          
+        }
 
         public  Boolean CadastrarFuncionario(Funcionario NovoCadastro)
         {
