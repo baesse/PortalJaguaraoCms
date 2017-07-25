@@ -19,7 +19,8 @@ namespace PORTALJAGUARAO.Controllers
 
         public ActionResult CadastrarNovoFuncionario(Funcionario NovoCadFuncionario)
         {
-            if (NovoCadFuncionario != null)
+
+            if (ModelState.IsValid)
             {
                 NovoCadFuncionario.CadastrarFuncionario(NovoCadFuncionario);
             }
