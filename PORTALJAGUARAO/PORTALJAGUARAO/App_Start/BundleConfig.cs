@@ -35,6 +35,7 @@ namespace PORTALJAGUARAO
               "~/Scripts/Inputmask/jquery.inputmask.js",
               "~/Scripts/Inputmask/inputmask.extensions.js",
               "~/Scripts/Inputmask/inputmask.date.extensions.js",
+               "~/Scripts/globalize/globalize.js",
               //and other extensions you want to include
               "~/Scripts/Inputmask/inputmask.numeric.extensions.js"));
 

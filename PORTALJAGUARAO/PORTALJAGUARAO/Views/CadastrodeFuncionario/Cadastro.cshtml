@@ -30,6 +30,7 @@
 
     
 
+
     <script>
         $(function () {
             $(".details").click(function () {
@@ -39,7 +40,85 @@
                 })
             });
         })
+
+
     </script>
+
+    <script type="text/javascript">
+            $('#Conjugenovo').click(function () {
+
+                var url = "/cadastrodefuncionario/CadastrodeConjuge";
+                var nome = $("#nomeconjuge").val();
+                var cpf = $("#cpf1").val();
+                var datanascimento = $("#nascimento4").val();
+                var cpffun = $("#cpf").val();
+
+                $.post(url, { Nome: nome, Cpf: cpf, DataNascimento: datanascimento, cpffuncionario: cpffun }, function (data) {
+                    $("#msg").html(data);
+
+                });
+            })
+    </script>
+
+    <script type="text/javascript">
+            $('#SalvarGratificacao').click(function () {
+
+                var url = "/cadastrodefuncionario/CadastroFinanceiro";               
+                var cpf = $("#cpf1").val();
+                var nome = $("#nomegratificacao").val();
+                var valor = $("#valorgratificacao").val();
+
+                $.post(url, { Descricao: nome, Cpf: cpf, Valor:valor }, function (data) {
+                    $("#msg").html(data);
+
+                });
+            })
+    </script>
+
+
+    
+
+    <script type="text/javascript">
+            $('#IncluirFilho').click(function () {
+
+                var url = "/cadastrodefuncionario/IncluirFilho";
+                var cpf = $("#cpf").val();
+                var cpffilho = $("#cpffilho").val();
+                var nome = $("#nomefilho").val();
+                var datanas = $("#datanascimentofilho").val();
+
+                $.post(url, { Cpf: cpf, cpffilho: cpffilho, nomefilho: nome, dtnascimento: datanas }, function (data) {
+                    $("#msg").html(data);
+
+                });
+            })
+    </script>
+
+    <script type="text/javascript">
+            $('#pesquisar').focusout(function () {
+
+                 var url = "/cadastrodefuncionario/Buscar";
+                 var cpf = $("#cpf").val();          
+
+                 $.get(url, { Cpf: cpf }, function (data) {
+                     var obj = JSON.parse(data);
+                     console.log(obj)
+                     document.getElementById('nomefunc').value = obj.Nome
+                     document.getElementById('cpf').value = obj.cpf
+                     document.getElementById('datadmissao').value = obj.DataAdmissao
+                     document.getElementById('sexo').value = obj.Sexo
+                     documento.getElementById('dataemissaoci').value = obj.Dataemissaoci
+                     document.getElementById('datanascimento').value = obj.DataNascimento
+                     document.getElementById('Ci').value=obj.Ci
+
+                    
+
+                     
+
+                 });
+             })
+    </script>
+
     }
 
     <script src="~/Content/JSSITE/VALIDACAOCPFCNPJ.js"></script>
@@ -61,6 +140,8 @@
 
 
     <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:black">
+
+       
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -108,7 +189,7 @@
         @using (Html.BeginForm("CadastrarNovoFuncionario", "CadastrodeFuncionario", FormMethod.Post))
         {
             @Html.ValidationSummary(true)
-            <input type="submit" class="btn btn-default" value="Cadastrar" />
+           
             <div class="col-lg-1"></div>
             <div class="col-lg-10">
 
@@ -122,20 +203,23 @@
                                     <div class="col-lg-2">
                                         @Html.LabelFor(Funcionario => Funcionario.Cpf)
                                         @Html.TextBoxFor(Funcionario => Funcionario.Cpf, new { @class = "form-control", id = "cpf" })
+                                        <div class="col-sm-2">
+                                            <input type="button" class="btn success" id="pesquisar" value="Buscar"/>
+                                        </div>
                                         @Html.ValidationMessageFor(Cliente => Cliente.Cpf)
                                     </div>
                                     <div class="col-lg-3">
                                         @Html.LabelFor(Funcionario => Funcionario.Nome)
-                                        @Html.TextBoxFor(Funcionario => Funcionario.Nome, new { @class = "form-control" })
-                                        @Html.ValidationMessageFor(Funcionario =>Funcionario.Nome)
+                                        @Html.TextBoxFor(Funcionario => Funcionario.Nome, new { @class = "form-control",id="nomefunc" })
+                                        @Html.ValidationMessageFor(Funcionario => Funcionario.Nome)
                                     </div>
                                     <div class="col-lg-2">
                                         @Html.LabelFor(Funcionario => Funcionario.DataAdmissao)
-                                        @Html.TextBoxFor(Funcionario => Funcionario.DataAdmissao, new { @class = "form-control", id = "nascimento" })
+                                        @Html.TextBoxFor(Funcionario => Funcionario.DataAdmissao, new { @class = "form-control",  id = "datadmissao" })
                                     </div>
                                     <div class="col-lg-2">
                                         @Html.LabelFor(Funcionario => Funcionario.DataDemissao)
-                                        @Html.TextBoxFor(Funcionario => Funcionario.DataDemissao, new { @class = "form-control", id = "nascimento1" })
+                                        @Html.TextBoxFor(Funcionario => Funcionario.DataDemissao, new { @class = "form-control", id = "datademissao" })
                                     </div>
                                     <div class="col-lg-2">
                                         @{
@@ -155,7 +239,7 @@
                                             });
                                         }
                                         @Html.LabelFor(Funcionario => Funcionario.Sexo)
-                                        @Html.DropDownListFor(Funcionario => Funcionario.Sexo, sexo, "Selecione...", new { @class = "form-control" })
+                                        @Html.DropDownListFor(Funcionario => Funcionario.Sexo, sexo, "Selecione...", new { @class = "form-control",id="sexo" })
 
 
                                     </div>
@@ -166,15 +250,15 @@
 
                                     <div class="col-lg-2">
                                         @Html.LabelFor(Funcionario => Funcionario.DataEmissaoci)
-                                        @Html.TextBoxFor(Funcionario => Funcionario.DataEmissaoci, new { @class = "form-control", id = "nascimento2" })
+                                        @Html.TextBoxFor(Funcionario => Funcionario.DataEmissaoci, new { @class = "form-control", id = "dataemissaoci" })
                                     </div>
                                     <div class="col-lg-2">
                                         @Html.LabelFor(Funcionario => Funcionario.DataNascimento)
-                                        @Html.TextBoxFor(Funcionario => Funcionario.DataNascimento, new { @class = "form-control", id = "nascimento3" })
+                                        @Html.TextBoxFor(Funcionario => Funcionario.DataNascimento, new { @class = "form-control", id = "datanascimento" })
                                     </div>
                                     <div class="col-lg-2">
                                         @Html.LabelFor(Funcionario => Funcionario.Ci)
-                                        @Html.TextBoxFor(Funcionario => Funcionario.Ci, new { @class = "form-control" })
+                                        @Html.TextBoxFor(Funcionario => Funcionario.Ci, new { @class = "form-control",id="Ci" })
                                     </div>
 
 
@@ -225,7 +309,7 @@
                                             });
                                         }
                                         @Html.LabelFor(Funcionario => Funcionario.EstadoCivil)
-                                        @Html.DropDownListFor(Funcionario => Funcionario.EstadoCivil, EstadoCivil, "Selecione...", new { @class = "form-control" })
+                                        @Html.DropDownListFor(Funcionario => Funcionario.EstadoCivil, EstadoCivil, "Selecione...", new { @class = "form-control",id="estadocivil" })
 
 
 
@@ -236,15 +320,15 @@
                                 <div class="row">
                                     <div class="col-lg-3">
                                         @Html.LabelFor(Funcionario => Funcionario.NomePai)
-                                        @Html.TextBoxFor(Funcionario => Funcionario.NomePai, new { @class = "form-control" })
+                                        @Html.TextBoxFor(Funcionario => Funcionario.NomePai, new { @class = "form-control",id="nomepai" })
                                     </div>
                                     <div class="col-lg-3">
                                         @Html.LabelFor(Funcionario => Funcionario.NomeMae)
-                                        @Html.TextBoxFor(Funcionario => Funcionario.NomeMae, new { @class = "form-control" })
+                                        @Html.TextBoxFor(Funcionario => Funcionario.NomeMae, new { @class = "form-control",id="nomemae" })
                                     </div>
                                     <div class="col-lg-2">
                                         @Html.LabelFor(Funcionario => Funcionario.NumeroPis)
-                                        @Html.TextBoxFor(Funcionario => Funcionario.NumeroPis, new { @class = "form-control" })
+                                        @Html.TextBoxFor(Funcionario => Funcionario.NumeroPis, new { @class = "form-control",id="numeropis" })
                                     </div>
                                     <div class="col-lg-2">
                                         @{
@@ -264,7 +348,7 @@
                                             });
                                         }
                                         @Html.LabelFor(Funcionario => Funcionario.Cargo)
-                                        @Html.DropDownListFor(Funcionario => Funcionario.Cargo, Cargo, "Selecione...", new { @class = "form-control" })
+                                        @Html.DropDownListFor(Funcionario => Funcionario.Cargo, Cargo, "Selecione...", new { @class = "form-control" ,id="cargo"})
 
 
                                     </div>
@@ -274,15 +358,15 @@
                                 <div class="row">
                                     <div class="col-lg-3">
                                         @Html.LabelFor(Funcionario => Funcionario.Ctps)
-                                        @Html.TextBoxFor(Funcionario => Funcionario.Ctps, new { @class = "form-control" })
+                                        @Html.TextBoxFor(Funcionario => Funcionario.Ctps, new { @class = "form-control",id="ctps" })
                                     </div>
                                     <div class="col-lg-2">
                                         @Html.LabelFor(Funcionario => Funcionario.Serie)
-                                        @Html.TextBoxFor(Funcionario => Funcionario.Serie, new { @class = "form-control" })
+                                        @Html.TextBoxFor(Funcionario => Funcionario.Serie, new { @class = "form-control",id="serie" })
                                     </div>
                                     <div class="col-lg-2">
                                         @Html.LabelFor(Funcionario => Funcionario.TituloEleitor)
-                                        @Html.TextBoxFor(Funcionario => Funcionario.TituloEleitor, new { @class = "form-control" })
+                                        @Html.TextBoxFor(Funcionario => Funcionario.TituloEleitor, new { @class = "form-control",id="tituloeleitor" })
                                     </div>
 
 
@@ -295,15 +379,15 @@
                                     </div>
                                     <div class="col-lg-2">
                                         @Html.LabelFor(Funcionario => Funcionario.Endereco)
-                                        @Html.TextBoxFor(Funcionario => Funcionario.Endereco, new { @class = "form-control" })
+                                        @Html.TextBoxFor(Funcionario => Funcionario.Endereco, new { @class = "form-control" ,id="endereco"})
                                     </div>
                                     <div class="col-lg-2">
                                         @Html.LabelFor(Funcionario => Funcionario.Bairro)
-                                        @Html.TextBoxFor(Funcionario => Funcionario.Bairro, new { @class = "form-control" })
+                                        @Html.TextBoxFor(Funcionario => Funcionario.Bairro, new { @class = "form-control",id="bairro" })
                                     </div>
                                     <div class="col-lg-2">
                                         @Html.LabelFor(Funcionario => Funcionario.Cidade)
-                                        @Html.TextBoxFor(Funcionario => Funcionario.Cidade, new { @class = "form-control" })
+                                        @Html.TextBoxFor(Funcionario => Funcionario.Cidade, new { @class = "form-control",id="cidade" })
                                     </div>
                                     <div class="col-sm-2">
                                         @{
@@ -323,7 +407,7 @@
                                             });
                                         }
                                         @Html.LabelFor(Funcionario => Funcionario.UF)
-                                        @Html.DropDownListFor(Funcionario => Funcionario.UF, UF, "Selecione...", new { @class = "form-control" })
+                                        @Html.DropDownListFor(Funcionario => Funcionario.UF, UF, "Selecione...", new { @class = "form-control" ,id="uf"})
                                     </div>
 
 
@@ -332,7 +416,7 @@
                                 <div class="row">
                                     <div class="col-lg-3">
                                         @Html.LabelFor(Funcionario => Funcionario.Naturalidade)
-                                        @Html.TextBoxFor(Funcionario => Funcionario.Naturalidade, new { @class = "form-control" })
+                                        @Html.TextBoxFor(Funcionario => Funcionario.Naturalidade, new { @class = "form-control" ,id="naturalidade"})
                                     </div>
                                     <div class="col-lg-2">
                                         @Html.LabelFor(Funcionario => Funcionario.Telefone)
@@ -360,18 +444,25 @@
                                             });
                                         }
                                         @Html.LabelFor(Funcionario => Funcionario.Escolaridade)
-                                        @Html.DropDownListFor(Funcionario => Funcionario.Escolaridade, escolaridade, "Selecione...", new { @class = "form-control" })
+                                        @Html.DropDownListFor(Funcionario => Funcionario.Escolaridade, escolaridade, "Selecione...", new { @class = "form-control",id="escolaridade" })
                                     </div>
 
 
                                 </div>
 
+                                <br />
+                                <div class="row">
+                                    <div class=" col-lg-2">
+                                        <input type="submit" class="btn btn-success"  value="Cadastrar" />
+                                    </div>
+                                </div>
                             </div>
                             <br />
 
 
                         </div>
                     </div>
+                    
 
 
                     <div class="row">
@@ -383,7 +474,7 @@
 
                                     <div class="col-lg-2">
                                         @Html.LabelFor(Funcionario => Funcionario.Conjuge.Nome)
-                                        @Html.TextBoxFor(Funcionario => Funcionario.Conjuge.Nome, new { @class = "form-control" })
+                                        @Html.TextBoxFor(Funcionario => Funcionario.Conjuge.Nome, new { @class = "form-control",id="nomeconjuge" })
                                     </div>
                                     <div class="col-lg-2">
                                         @Html.LabelFor(Funcionario => Funcionario.Conjuge.Cpf)
@@ -393,10 +484,16 @@
                                         @Html.LabelFor(Funcionario => Funcionario.Conjuge.DatadeNascimento)
                                         @Html.TextBoxFor(Funcionario => Funcionario.Conjuge.DatadeNascimento, new { @class = "form-control", id = "nascimento4" })
                                     </div>
+        
+                                   
 
                                 </div>
 
-
+                                <div class="row">
+                                    <div class="col-lg-2">
+                                        <input type="button" class="btn btn-success" value="InserirConjuge" id="Conjugenovo" />
+                                    </div>
+                                </div>
 
                             </div>
                         </div>
@@ -566,12 +663,12 @@
 
                                     <div class="col-lg-4">
                                         @Html.LabelFor(Funcionario => Funcionario.gratificacao.NomedaGratificacao)
-                                        @Html.TextBoxFor(Funcionario => Funcionario.gratificacao.NomedaGratificacao, new { @class = "form-control"})
+                                        @Html.TextBoxFor(Funcionario => Funcionario.gratificacao.NomedaGratificacao, new { @class = "form-control",id="nomegratificacao"})
                                     </div>
 
                                     <div class="col-lg-4">
                                         @Html.LabelFor(Funcionario => Funcionario.gratificacao.valor)
-                                        @Html.TextBoxFor(Funcionario => Funcionario.gratificacao.valor, new { @class = "form-control", @id = "valorgratificacao" })
+                                        @Html.TextBoxFor(Funcionario => Funcionario.gratificacao.valor, new { @class = "form-control", id = "valorgratificacao" })
                                     </div>
 
                                     
@@ -587,7 +684,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-                            <button type="button" class="btn btn-primary">Salvar</button>
+                            <button type="button" id="SalvarGratificacao" class="btn btn-primary">Salvar</button>
                         </div>
                     </div><!-- /.modal-content -->
                 </div><!-- /.modal-dialog -->
@@ -610,18 +707,18 @@
                                        
                                             <div class="col-lg-6">
                                                 @Html.LabelFor(Funcionario => Funcionario.filho.Nome)
-                                                @Html.TextBoxFor(Funcionario => Funcionario.filho.Nome, new { @class="form-control" })
+                                                @Html.TextBoxFor(Funcionario => Funcionario.filho.Nome, new { @class="form-control", id="nomefilho"})
                                             </div>
                                             
                                                 <div class="col-lg-4">
                                                     @Html.LabelFor(Funcionario => Funcionario.filho.cpf)
-                                                    @Html.TextBoxFor(Funcionario => Funcionario.filho.cpf, new { @class = "form-control" })
+                                                    @Html.TextBoxFor(Funcionario => Funcionario.filho.cpf, new { @class = "form-control", id="cpffilho" })
                                                 </div>
                                             
                                        <br />
                                             <div class="col-lg-4">
                                                 @Html.LabelFor(Funcionario => Funcionario.filho.DatadeNascimento)
-                                                @Html.TextBoxFor(Funcionario => Funcionario.filho.DatadeNascimento, new { @class = "form-control" })
+                                                @Html.TextBoxFor(Funcionario => Funcionario.filho.DatadeNascimento, new { @class = "form-control", id="datanascimentofilho" })
                                             </div>
                                       
 
@@ -634,8 +731,8 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-                        <button type="button" class="btn btn-primary">Salvar</button>
+                        <button type="button"class="btn btn-default" data-dismiss="modal">Fechar</button>
+                        <button type="button"  id="IncluirFilho" class="btn btn-primary">Salvar</button>
                     </div>
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
